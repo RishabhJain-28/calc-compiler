@@ -15,7 +15,7 @@ pub type ParsedProgram<'a> = Vec<ParsedStatement<'a>>;
 
 #[derive(Debug)]
 pub enum ParsedStatement<'a> {
-    Decleration(&'a str),
+    Declaration(&'a str),
     InputOperation(&'a str),
     OutputOperation(ParsedExpr<'a>),
     Assignment(&'a str, ParsedExpr<'a>),
@@ -23,14 +23,14 @@ pub enum ParsedStatement<'a> {
 
 pub type ParsedExpr<'a> = (ParsedTerm<'a>, Vec<(ExprOperator, ParsedTerm<'a>)>);
 
-#[derive(Debug)]
+#[derive(Debug, Clone, Copy)]
 pub enum ExprOperator {
     Add,
     Subtract,
 }
 pub type ParsedTerm<'a> = (ParsedFactor<'a>, Vec<(TermOperator, ParsedFactor<'a>)>);
 
-#[derive(Debug)]
+#[derive(Debug, Clone, Copy)]
 pub enum TermOperator {
     Multiply,
     Divide,
@@ -57,7 +57,7 @@ pub fn parse_program(input: &str) -> IResult<&str, ParsedProgram> {
 
 fn parse_decleration(input: &str) -> IResult<&str, ParsedStatement> {
     tuple((char('@'), skip_spaces, parse_identifier))(input)
-        .map(|(input, output)| (input, ParsedStatement::Decleration(output.2)))
+        .map(|(input, output)| (input, ParsedStatement::Declaration(output.2)))
 }
 
 fn parse_input_statement(input: &str) -> IResult<&str, ParsedStatement> {
