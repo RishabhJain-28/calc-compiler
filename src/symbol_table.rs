@@ -50,4 +50,7 @@ impl SymbolTable {
     pub fn iter(&self) -> std::slice::Iter<SymbolEntry> {
         self.entities.iter()
     }
+    pub fn get_name(&self, handle: usize) -> String {
+        self.entities[handle].0.clone()
+    }
 }
