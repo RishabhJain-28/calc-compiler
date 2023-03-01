@@ -1,6 +1,7 @@
-#Calc Compiler
+# Calc Compiler
 
-##Calc language syntax:
+## Calc language syntax:
+
 _only support f64 data type._
 
 `@a` -> declare an identifier and sets them to 0.0.
@@ -8,7 +9,7 @@ _only support f64 data type._
 `>a` -> get value and store it in an identifier
 `< some_expr` -> output an expression or a iddentifier
 
-##Use:
+## Use:
 
 `cargo r -- source.calc`
 Convert a .calc file into .rs file.
