@@ -1,6 +1,8 @@
+type SymbolEntry = (String, f64);
 #[derive(Debug)]
+
 pub struct SymbolTable {
-    entities: Vec<(String, f64)>,
+    entities: Vec<SymbolEntry>,
 }
 
 impl SymbolTable {
@@ -38,5 +40,14 @@ impl SymbolTable {
                 identifier
             ))
         }
+    }
+    pub fn get_value(&self, handle: usize) -> f64 {
+        self.entities[handle].1
+    }
+    pub fn set_value(&mut self, handle: usize, value: f64) {
+        self.entities[handle].1 = value;
+    }
+    pub fn iter(&self) -> std::slice::Iter<SymbolEntry> {
+        self.entities.iter()
     }
 }

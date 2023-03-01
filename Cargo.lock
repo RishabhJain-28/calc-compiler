@@ -3,7 +3,7 @@
 version = 3
 
 [[package]]
-name = "analyzer"
+name = "interpreter"
 version = "0.1.0"
 dependencies = [
  "nom",

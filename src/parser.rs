@@ -2,11 +2,11 @@
 
 use nom::{
     branch::alt,
-    bytes::{complete::take_while, streaming::tag},
+    bytes::complete::{tag, take_while},
     character::complete::{alpha1, char},
     combinator::map,
     multi::many0,
-    number::streaming::double,
+    number::complete::double,
     sequence::{delimited, preceded, tuple},
     IResult,
 };
